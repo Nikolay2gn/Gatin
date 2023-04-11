@@ -1,0 +1,124 @@
+№1
+Создайте функцию calculate, которая принимает у пользователя два числа и операцию, а выдает результат операции. Обязательно: воспользуйтесь функциями exec или eval
+
+def calculate(a,b,oper):
+  if a == 0 or b == 0:
+    return "На ноль делить нельзя"
+  return(eval(f'{a}{oper}{b}'))
+print(calculate(2,0,'/'))
+print(calculate(2,3,'*'))
+
+№2
+Пусть дан список имен пользователлей s. Создайте функцию, которая: a) Преобразует имена так, чтобы имена начинались с заглавной буквы. б) Удаляет недопустимые символы (пробелы, цифры и спецсимволы)
+
+s = ['анТОн', 'НАТАЛЬЯ', 'никита', 'МаРиЯ', '!СЕРГЕЙ!', 'Владимир747', 'Павел+100500']
+а)
+def names(words):
+   ss=[]
+   for i in words:
+       ss.append(i.capitalize())
+   return ss
+print(names(['анТОн', 'НАТАЛЬЯ', 'никита', 'МаРиЯ', '!СЕРГЕЙ!', 'Владимир747', 'Павел+100500']))
+б)
+def names(words):
+    seet = set('абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЗЖИЙКЛМНОПРСТУФХЦЧШЩЪЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    filt_names = []
+    for name in words:
+        filt_name = ''.join(filter(seet.__contains__, name))
+        filt_names.append(filt_name)
+    return filt_names
+№3
+Создайте функцию honest, которая принимает произвольный список, а возвращает список, состоящий только из четных элементов. Список от 0 до 20 создайте любым способом. 
+def is_even(a):
+   return a % 2 == 0
+def honest(spis):
+  spiis=[]
+  spiis.append(list(filter(is_even,spis)))
+  return spiis
+print(honest(spis=[i for i in range(21)]))
+
+№4
+Создайте функцию cesar, которая возвращает зашифрованную строку шифром Цезаря со сдвигом на 3. Саму строку запросите у пользователя.
+
+Шифр Цезаря — это вид шифра подстановки, в котором каждый символ в открытом тексте заменяется символом, находящимся на некотором постоянном числе позиций левее или правее него в алфавите. Например, в шифре со сдвигом вправо на 3, А была бы заменена на Г, Б станет Д, и так далее.
+def cesar (str):
+  new_str=''
+  for i in str:
+     i=chr(ord(i)+3)
+     new_str=new_str+i
+  return new_str
+print(cesar('abcdefg'))
+
+№5
+Создайте функцию countdown, которая принимает список рандомных чисел от 0 до 10, а возвращает каждый элемент этого списка в порядке обратного отсчета, а после 0 - слово " Пуск!".
+Например:
+countdown(s)
+3 2 1 0 Пуск!
+def countdown(lst):
+ a='Пуск!'
+ lst=sorted(lst, reverse=1)
+ lst.append(a)
+ return lst
+print(*countdown([0,7, 5, 9, 3, 8, 6, 2, 1]))
+
+№6
+Создать функцию alphabet, которая:
+
+а) выводит буквы английского алфавита и их порядковый номер.
+
+б) выводит словарь {порядковый номер : буква }
+
+а)
+def alphabet():
+ ss=[]
+ spisok = [chr(i) for i in range(65, 91)]
+ for id, val in enumerate(spisok, 1):
+   ss.append((val,id))
+ return ss
+print(*alphabet(), sep='\n')
+б)
+def alphabet():
+ slov={}
+ spisok = [chr(i) for i in range(65, 91)]
+ numbers=[a for a in range(1,27)]
+ slov={key : value for key, value in zip(numbers, spisok)}
+ return slov
+print(alphabet())
+
+№7
+Пусть дана функция, которая спрашивает имя пользователя.
+
+def get_name( ):
+  name = input('Введите имя')
+  return name
+Создайте декоратор hello, который дополнительно будет выводить приветствие: "Привет, <имя>!"
+
+def hello(func):
+   def wrapper():
+       name = func()
+       print(f"Привет, {name}!")
+       return name
+   return wrapper
+@hello
+def get_name():
+   name = input('Введите имя: ')
+   return name
+get_name()
+
+
+
+
+
+
+
+
+
+
+
+
+
+s = ['анТОн', 'НАТАЛЬЯ', 'никита', 'МаРиЯ', '!СЕРГЕЙ!', 'Владимир747', 'Павел+100500']
+print(names(s))
+
+№3
+
