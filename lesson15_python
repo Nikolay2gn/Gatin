@@ -1,0 +1,249 @@
+Gatin Nikolay 912 gr
+Задание 1
+Создайте класс cat и добавьте 3 атрибута (имя, окрас, возраст) и 3 метода класса (мяукнуть, мурлыкать и еще один на ваше усмотрение).
+Создайте 1 экземпляр класса и продемонстрируйте его атрибуты и методы.
+
+class Cat:
+    def __init__(self, name, colour, age):
+        self.name = name
+        self.colour = colour
+        self.age = age
+
+    def voice(self):
+        print('Мяяяяяу')
+
+    def myyr(self):
+        print('Мууур')
+
+    def sleep(self):
+        print('Hrrrrr')
+
+
+first = Cat('Буся', 'red', '1')
+print(first.name)
+print(first.colour)
+print(first.age)
+first.voice()
+first.myyr()
+first.sleep()
+
+Задание 2
+Создайте класс Good, который будет вычислять значения стоимости товаров. В качестве атрибутов пусть будут:
+    name (имя товара),
+    price(цена за 1 кг),
+    cost (стоимость),
+    weight(масса);
+в качестве методов:
+    calc - вычисляющий стоимость товара.
+Реализуйте два экземпляра класса Good:
+    Яблоки apple('apple', price = 100, weight = 1.5)
+    Груши pear('pear', price = 120, weight = 0.8)
+
+Выведите их стоимость
+class Good:
+    def __init__(self, name, price, weight, cost=0):
+        self.name = name
+        self.price = price
+        self.weight = weight
+        self.cost = cost
+
+    def calc(self):
+        self.cost = self.price * self.weight
+        print(self.cost)
+
+Apples = Good('apple', price=100, weight=1.5)
+print(Apples.name)
+print(Apples.price)
+print(Apples.weight)
+Apples.calc()
+
+Pears = Good('pear', price=120, weight=0.8)
+print(Pears.name)
+print(Pears.price)
+print(Pears.weight)
+Pears.calc()
+
+Задание 3
+Создайте класс Car, реализуйте в нем 5 атрибутов :
+    цвет,
+    марку,
+    кузов (сидан sedan, грузовик truck),
+    скорость,
+    тип коробки передач;
+и 6 методов:
+    start - заставляет начинать движение
+    stop - останавливает машину
+    turn - поворачивает машину в какую-либо сторону, и выводит сообщение:" Машина повернула налево"
+    speed_up - ускоряет автомобиль
+    speed_down - замедляет автомобиль
+    beep - сигналит
+Создайте два экземпляра класса truck и car. Продемонстрируйте работу всех методов
+
+class Car:
+    def __init__(self, colour, brand, body, transmission, speed=0):
+        self.colour = colour
+        self.brand = brand
+        self.body = body
+        self.transmission = transmission
+        self.speed = speed
+
+    def start(self):
+        print('Машина едет со скоростью 10 km/h')
+        self.speed = 10
+
+    def stop(self):
+        print('Машина остановилась и ее скорость равна 0 км/ч')
+        self.speed = 0
+
+    def turn(self, side):
+        print(f'Машина поворачивает {side}')
+
+    def speed_up(self, i=1):
+        print(f'Машина ускоряется и её скорость равна = {self.speed + i} км/ч')
+        self.speed += i
+
+    def speed_down(self, a=2):
+        if self.speed == 0:
+            print('Скорость равна = 0 км/ч')
+        else:
+            print(f'Машина замедляется и её скорость равна = {self.speed - a} км/ч')
+            self.speed -= a
+
+    def beep(self):
+        print('Биииип - едет машина')
+
+
+car = Car('Black-green', 'BMW', 'Sedan', 'auto')
+print(car.colour)
+print(car.brand)
+print(car.body)
+print(car.transmission)
+print(car.speed)
+car.start()
+print(car.speed)
+car.stop()
+print(car.speed)
+car.speed_up(20)
+car.turn('направо')
+print(car.speed)
+car.speed_down(10)
+print(car.speed)
+car.beep()
+
+truck = Car('Grey-blue', 'VAZ', 'Truck', 'mechanic')
+print(truck.colour)
+print(truck.brand)
+print(truck.body)
+print(truck.transmission)
+print(truck.speed)
+truck.start()
+print(truck.speed)
+truck.stop()
+print(truck.speed)
+truck.speed_up(10)
+truck.turn('налево')
+print(truck.speed)
+truck.speed_down(10)
+print(truck.speed)
+truck.beep()
+
+Задание 4
+Добавьте ограничение скорости в класс Car из предыдущего задания: для грузовика(truck) 60 км/ч, а для легкового(car) - 80 км/ч. При превышении пусть на экран выводится предупреждение: "Скорость превышена! Разрешенная скорость 60 км/ч"
+
+class Car:
+    def __init__(self, colour, brand, body, transmission, speed=0):
+        self.colour = colour
+        self.brand = brand
+        self.body = body
+        self.transmission = transmission
+        self.speed = speed
+
+    def start(self):
+        print('Машина едет со скоростью 10 km/h')
+        self.speed = 10
+
+    def stop(self):
+        print('Машина остановилась и ее скорость равна 0 км/ч')
+        self.speed = 0
+
+    def turn(self, side):
+        print(f'Машина поворачивает {side}')
+
+    def speed_up(self, i=1):
+        if self.body == 'Sedan' and self.speed + i > 80:
+            print('Скорость превышена! Разрешенная скорость 60 км/ч')
+        elif self.body == 'Truck' and self.speed + i > 60:
+            print('Скорость превышена! Разрешенная скорость 80 км/ч')
+        else:
+            print(f'Машина ускоряется и её скорость равна = {self.speed + i} км/ч')
+            self.speed += i
+
+    def speed_down(self, a=2):
+        if self.speed == 0:
+            print('Скорость равна = 0 км/ч')
+        else:
+            print(f'Машина замедляется и её скорость равна = {self.speed - a} км/ч')
+            self.speed -= a
+
+    def beep(self):
+        print('Биииип - едет машина')
+
+
+car = Car('Black-green', 'BMW', 'Sedan', 'auto')
+print(car.colour)
+print(car.brand)
+print(car.body)
+print(car.transmission)
+print(car.speed)
+car.start()
+print(car.speed)
+car.speed_up(90)
+car.turn('направо')
+print(car.speed)
+car.speed_down(10)
+print(car.speed)
+car.stop()
+print(car.speed)
+car.beep()
+
+truck = Car('Grey-blue', 'VAZ', 'Truck', 'mechanic')
+print(truck.colour)
+print(truck.brand)
+print(truck.body)
+print(truck.transmission)
+print(truck.speed)
+truck.start()
+print(truck.speed)
+truck.speed_up(70)
+truck.turn('налево')
+print(truck.speed)
+truck.speed_down(10)
+print(truck.speed)
+truck.stop()
+print(truck.speed)
+truck.beep()
+
+Задание 5
+Создайте класс светофор (trafficlight). Реализуйте в нем метод, который будет переключать цвета (red, green, yellow) по определенному времени: red = 1 сек, green 2 сек, yellow = 0.5 сек.
+Подсказка:
+Воспользуйтесь модулем time. В нем есть функция sleep
+
+from time import sleep
+
+class trafficlight:
+    def __init__ (self,colour = 'red'):
+        self.colour = colour
+    def swap(self):
+        while True:
+            print(self.colour)
+            self.colour = 'green'
+            sleep(1)
+            print(self.colour)
+            self.colour = 'yellow'
+            sleep(2)
+            print(self.colour)
+            self.colour = 'red'
+            sleep(0.5)
+
+example=trafficlight()
+print(example.swap())
